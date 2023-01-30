@@ -3,7 +3,7 @@ function Header() {
 
   return (
     <div className="header">
-      <h1>Weather App</h1>
+      <h1>What's the weather?</h1>
     </div>
   )
 }

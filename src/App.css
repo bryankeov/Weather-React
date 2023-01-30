@@ -1,3 +1,32 @@
+body {
+  background: skyblue;
+
+}
+
 .App {
   text-align: center;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  height: 30px;
+}
+
+.input-location {
+  font-size: 20px;
+  background-color: whitesmoke ;
+  height: 25px;
+  border: 1px solid;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.submit {
+  font-weight: bold;
+  height: 29px;
+  background-color: whitesmoke;
+  border: 1px solid;
+  border-radius: 5px;
+  margin: 5px;
 }

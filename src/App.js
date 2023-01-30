@@ -5,7 +5,7 @@ import React, {useState, useEffect} from 'react'
 
 function App() {
   const [data, setData] = useState([])
-  const [input, setInput] = useState("melbourne")
+  const [input, setInput] = useState("Melbourne, AU")
   
   useEffect(() => {
     const fetchData = async () => {
@@ -21,13 +21,15 @@ function App() {
     setInput(inputLoc.value);
   }
 
+  
+
   return (
     <div className="App">
       <Header/>
-      <label>
+      <div className="input-container">
         <input type="text" className="input-location" placeholder="Type a location"></input>
-        <button type="submit" onClick={submitLocation}>Submit</button>
-      </label>
+        <button type="submit" className="submit" onClick={submitLocation}>Submit</button>
+      </div>
       <Display
         data={data}
       />
