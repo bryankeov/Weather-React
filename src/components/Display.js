@@ -43,7 +43,7 @@ function Display(props) {
   return (
     <div>
       {data.main === undefined
-        ? console.log("Location does not exist") : 
+        ? <div className="display">Sorry, we couldn't find this location!</div> :
         <div className="display">
           <div className="name">{data.name}</div>
           <img src={weatherImage()}></img>
