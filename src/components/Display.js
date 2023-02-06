@@ -1,17 +1,17 @@
-import "./Display.css"
-import brokenClouds from "../assets/images/brokenclouds.png"
-import clearSky from "../assets/images/clearsky.png"
-import fewClouds from "../assets/images/fewclouds.png"
-import scatteredClouds from "../assets/images/scatteredclouds.png"
-import showerRain from "../assets/images/showerrain.png"
-import rain from "../assets/images/rain.png"
-import thunderstorm from "../assets/images/thunderstorm.png"
-import snow from "../assets/images/snow.png"
-import mist from "../assets/images/mist.png"
+import './Display.css';
+import brokenClouds from '../assets/images/brokenclouds.png';
+import clearSky from '../assets/images/clearsky.png';
+import fewClouds from '../assets/images/fewclouds.png';
+import scatteredClouds from '../assets/images/scatteredclouds.png';
+import showerRain from '../assets/images/showerrain.png';
+import rain from '../assets/images/rain.png';
+import thunderstorm from '../assets/images/thunderstorm.png';
+import snow from '../assets/images/snow.png';
+import mist from '../assets/images/mist.png';
 
 function Display(props) {
-  const data = props.data
-console.log(data)
+  const data = props.data;
+
   function weatherImage() {
     const weather = data.weather[0].description;
     return weather === "broken clouds" 
@@ -39,7 +39,7 @@ console.log(data)
   function toCelcius(num) {
     return Math.round(num - 273.15) + "˚c";
   }
-  
+
   return (
     <div>
       {data.main === undefined
