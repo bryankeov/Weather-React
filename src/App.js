@@ -1,11 +1,12 @@
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import Header from './components/Header';
 import Display from './components/Display';
-import React, {useState, useEffect} from 'react';
 
 function App() {
   const [data, setData] = useState([]);
-  const [input, setInput] = useState("Melbourne, AU");
+  const [input, setInput] = useState('Melbourne, AU');
+  const [location, setLocation] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,20 +18,30 @@ function App() {
   }, [input]);
 
   function submitLocation() {
-    const inputLoc = document.getElementsByClassName("input-location")[0];
-    setInput(inputLoc.value);
+    setInput(location);
   }
 
   return (
     <div className="App">
       <Header/>
       <div className="input-container">
-        <input type="text" className="input-location" placeholder="Type a location"></input>
-        <button type="submit" className="submit" onClick={submitLocation}>Submit</button>
+        <input
+          type="text"
+          className="input-location"
+          placeholder="Type a location"
+          onChange={(event) => {
+            setLocation(event.target.value);
+          }}
+        />
+        <button
+          type="submit"
+          className="submit"
+          onClick={submitLocation}
+        >
+          Submit
+        </button>
       </div>
-      <Display
-        data={data}
-      />
+      <Display data={data} />
     </div>
   );
 }
