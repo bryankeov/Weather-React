@@ -17,7 +17,8 @@ function App() {
     fetchData();
   }, [input]);
 
-  function submitLocation() {
+  function submitLocation(e) {
+    e.preventDefault();
     setInput(location);
   }
 
@@ -25,21 +26,23 @@ function App() {
     <div className="App">
       <Header/>
       <div className="input-container">
-        <input
-          type="text"
-          className="input-location"
-          placeholder="Type a location"
-          onChange={(event) => {
-            setLocation(event.target.value);
-          }}
-        />
-        <button
-          type="submit"
-          className="submit"
-          onClick={submitLocation}
-        >
-          Submit
-        </button>
+        <form submit={submitLocation}>
+          <input
+            type="text"
+            className="input-location"
+            placeholder="Type a location"
+            onChange={(event) => {
+              setLocation(event.target.value);
+            }}
+          />
+          <button
+            type="submit"
+            className="submit"
+            onClick={submitLocation}
+          >
+            Submit
+          </button>
+        </form>
       </div>
       {data?.main && <Display data={data} />}
     </div>
