@@ -9,31 +9,22 @@ import thunderstorm from '../assets/images/thunderstorm.png';
 import snow from '../assets/images/snow.png';
 import mist from '../assets/images/mist.png';
 
-function Display(props) {
-  const data = props.data;
+const WEATHER_IMG = {
+  'broken clouds' : brokenClouds,
+  'clear sky': clearSky,
+  'few clouds': fewClouds,
+  'scattered clouds': scatteredClouds,
+  'shower rain': showerRain,
+  'light rain': rain,
+  'thunderstorm': thunderstorm,
+  'snow': snow,
+  'mist': mist,
+};
 
-  function weatherImage() {
-    const weather = data.weather[0].description;
-    return weather === "broken clouds" 
-    ? brokenClouds
-    : weather === "clear sky"
-    ? clearSky
-    : weather === "few clouds"
-    ? fewClouds
-    : weather === "scattered clouds"
-    ? scatteredClouds
-    : weather === "shower rain"
-    ? showerRain
-    : weather === "light rain"
-    ? rain
-    : weather === "thunderstorm"
-    ? thunderstorm
-    : weather === "snow"
-    ? snow
-    : weather === "mist"
-    ? mist
-    : console.log("Cannot match image")
-  }
+function Display(props) {
+  const { weather, name, main } = props.data;
+  const desc = weather[0].description;
+  const weatherImg = WEATHER_IMG[desc] || console.log('Cannot match image');
 
   //Convert Kelvins to Celcius
   function toCelcius(num) {
@@ -42,15 +33,15 @@ function Display(props) {
 
   return (
     <div>
-      {data.main === undefined
+      {main === undefined
         ? <div className="display">Sorry, we couldn't find this location!</div> :
         <div className="display">
-          <div className="name">{data.name}</div>
-          <img src={weatherImage()}></img>
-          <div className="temp">Current Temp: {toCelcius(data.main.temp)}</div>
-          <div className="humidity">Humidity: {data.main.humidity}%</div>
-          <div className="max">Max: {toCelcius(data.main.temp_max)}</div>
-          <div className="min">Min: {toCelcius(data.main.temp_min)}</div>
+          <div className="name">{name}</div>
+          <img alt={desc} src={weatherImg}></img>
+          <div className="temp">Current Temp: {toCelcius(main.temp)}</div>
+          <div className="humidity">Humidity: {main.humidity}%</div>
+          <div className="max">Max: {toCelcius(main.temp_max)}</div>
+          <div className="min">Min: {toCelcius(main.temp_min)}</div>
         </div>
       }
     </div>
