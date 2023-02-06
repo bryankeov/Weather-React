@@ -10,7 +10,7 @@ import snow from '../assets/images/snow.png';
 import mist from '../assets/images/mist.png';
 
 const WEATHER_IMG = {
-  'broken clouds' : brokenClouds,
+  'broken clouds': brokenClouds,
   'clear sky': clearSky,
   'few clouds': fewClouds,
   'scattered clouds': scatteredClouds,

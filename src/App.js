@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Display from './components/Display';
 
 function App() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
   const [input, setInput] = useState('Melbourne, AU');
   const [location, setLocation] = useState('');
 
@@ -41,7 +41,7 @@ function App() {
           Submit
         </button>
       </div>
-      <Display data={data} />
+      {data?.main && <Display data={data} />}
     </div>
   );
 }
